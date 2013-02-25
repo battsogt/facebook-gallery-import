@@ -1,0 +1,42 @@
+<html>
+<head>
+<link rel="stylesheet" href="http://gallery.danslereseau.com/fb/style.css?1:1" type="text/css" />
+</head>
+<body>
+<div style="padding: 10px;">
+	<h1>Import Photos from a Gallery</h1>
+	<br/>
+
+	<h2>Help</h2>
+	<br/>
+
+	<p>The Gallery Import application will allow you, the end-user, to import pictures from any <a href="http://gallery.menalto.com/" target="_new">Gallery</a> (version 2 or 3) installation into your Facebook profile, as Photos Albums.</p>
+	<p>The first step you need to do in order to be able to import pictures into Facebook from a Gallery installation is install a small helper PHP file in your Gallery 2 installation, or a module on your Gallery 3 installation.</p>
+
+	<p><strong>Gallery 2</strong>
+	<ol>
+		<li>Create a new 'fb' subdirectory in your Gallery installation (using FTP or SSH), i.e. in the directory that contains main.php etc.</li>
+		<li>Download the <a href="http://gallery.danslereseau.com/fb/export_fb.phps">export_fb.phps helper file</a>.</li>
+		<li>Rename this file 'export_fb.php' and upload it in the new directory you just created ('fb').</li>
+	</ol>
+	The resulting script should be available at: http://your_gallery_url/fb/export_fb.php
+	</p>
+
+	<p><strong>Gallery 3</strong>
+	<ol>
+		<li>Install the <a href="http://codex.gallery2.org/Gallery3:Modules:export_facebook" target="_new">export_facebook</a> module.</li>
+	</ol>
+	</p>
+
+	<p>Note: You will not need to repeat this step each time you want to import pictures from Gallery to Facebook; this was a one time setup step.</p>
+	<p>Next, you can start an import session by clicking <em>Gallery Import</em> Applications bookmark, or if you just added the Gallery Import application, you've already been redirected to a new import session.</p>
+	<p>Once the import is completed, you'll be redirected to the last photos album that was created to import your pictures. You'll need to Accept all the photos that have been uploaded by the Gallery Import application before they'll be visible to others.</p>
+	<p>If you imported a Gallery album with more than 200 pictures, more than one photos album will have been created in Facebook. Make sure you Accept the pictures in all the new albums, not just the last one.</p>
+
+	<p>If you find any problem or inconsistency in your use of the Gallery Import application, please report them to the developer(s) using the application's <a href="http://www.facebook.com/apps/application.php?id=2390304162" target="_new">discussion board</a>.</p>
+
+	<hr/>
+	<div style="clear: both;"/>
+</div>
+</body>
+</html>

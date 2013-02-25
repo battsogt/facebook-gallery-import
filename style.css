@@ -1,0 +1,76 @@
+body {
+  background: #fff;
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+  font-size: 11px;
+  margin: 0px;
+  padding: 0px;
+  text-align: left; }
+h1, h2, h3, h4, h5 {
+  font-size: 13px;
+  color: #333;
+  margin: 0px;
+  padding: 0px; }
+h1 {
+  font-size: 14px; }
+p {
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+  font-size: 11px;
+  text-align: left; }
+a {
+  color: #3b5998;
+  text-decoration: none; }
+a:hover {
+  text-decoration: underline; }
+img {
+  border: 0px; }
+select {
+  border:1px solid #BDC7D8;
+  font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+  font-size:11px;
+  padding:2px;
+}
+
+/*  ------------------------------|  FORMS  |-------------------------------  */
+
+form {
+  margin: 0px;
+  padding: 0px; }
+
+label {
+  color: #666666;
+  font-weight: bold; }
+
+/*  FORM INPUTS  */
+
+.inputtext,
+.inputpassword {
+  border: 1px solid #bdc7d8;
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+  font-size: 11px;
+  padding: 3px; }
+
+textarea {
+  border: 1px solid #bdc7d8;
+  padding: 3px;
+  font-size: 11px;
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif; }
+     
+.inputbutton,
+.inputsubmit {
+  border-style: solid;
+  border-top-width: 1px;
+  border-left-width: 1px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+  border-top-color: #D9DFEA;
+  border-left-color: #D9DFEA;
+  border-bottom-color: #0e1f5b;
+  border-right-color: #0e1f5b;
+  background-color: #3b5998;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif; 
+  text-align: center; }
+
+.inputcheckbox {
+  border: 0px; }

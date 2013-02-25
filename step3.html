@@ -1,0 +1,88 @@
+<h3>Step 3</h3><br/>
+<form method="post" action="http://gallery.danslereseau.com/fb/">
+	Import captions:<br/>
+
+	<label>Title:</label> <input type="checkbox" value="title" name="captions[]" checked="checked"/><br/>
+	
+	<?php
+	$extra_captions = FALSE;
+	foreach ($photos_infos as $photo_info) {
+		if (preg_match("@([0-9]+)\t([^\t]*)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t(.+)@", $photo_info, $regs)) {
+			$extra_captions = TRUE;
+		}
+		if (preg_match("@([0-9]+)\t([^\t]*)\t([^\t]+)\t([^\t]+)\t([^\t]*)\t([^\t]*)\t(.+)@", $photo_info, $regs)) {
+			$extra_captions = TRUE;
+		}
+		if (preg_match("@([0-9]+)\t([^\t]*)\t([^\t]+)\t([^\t]+)\t([^\t]*)\t([^\t]+)\t(.*)@", $photo_info, $regs)) {
+			$extra_captions = TRUE;
+		}
+		if (preg_match("@([0-9]+)\t([^\t]*)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]*)\t(.*)@", $photo_info, $regs)) {
+			$extra_captions = TRUE;
+		}
+	}
+	?>
+	<?php if ($extra_captions): ?>
+		<label>Summary:</label> <input type="checkbox" value="summary" name="captions[]" /><br/>
+		<label>Keywords:</label> <input type="checkbox" value="keywords" name="captions[]" /><br/>
+		<label>Description:</label> <input type="checkbox" value="description" name="captions[]" /><br/>
+	<?php endif; ?>
+
+	<label>URL:</label> <input type="checkbox" value="url" name="captions[]" /><br/>
+
+	<br/>
+	Select photos to import.<br/><br/>
+
+	<?php if ($num_photos == 0) : ?>
+		This album doesn't contain any photos.
+	<?php else : ?>
+		<script type="text/javascript">
+		function select(selected) {
+			var elems = document.forms[0].elements;
+			for (var i=0; i<elems.length; i++) {
+				if ('checkbox' == elems[i].type && elems[i].name != 'captions[]') {
+					elems[i].checked = selected;
+				}
+			}
+		}
+		</script>
+
+		<span style="float: right"><a href="select_all" onclick="select(true);return false">Select All</a> 
+		| <a href="select_none" onclick="select(false);return false">Select None</a></span>
+
+		<?php echo $num_photos ?> photos found.<br/><br/>
+		<input value="Continue &gt;" type="submit" class="inputsubmit"/><br/><br/>
+
+		<?php
+		foreach ($photos_infos as $photo_info) {
+			if (preg_match("@([0-9]+)\t([^\t]*)\t([^\t]+)\t([^\t]+)@", $photo_info, $regs)) {
+				$photo = (object) array('id' => $regs[1], 'title' => $regs[2], 'url' => $regs[3], 'thumbUrl' => $regs[4]);
+				if ($photo->url[0] == '/') {
+					$photo->url = $_SESSION['gallery_url'] . $photo->url;
+				}
+				if ($photo->thumbUrl[0] == '/') {
+					$photo->thumbUrl = $_SESSION['gallery_url'] . $photo->thumbUrl;
+				}
+				if (preg_match("@([0-9]+)\t([^\t]*)\t([^\t]+)\t([^\t]+)\t([^\t]*)\t([^\t]*)\t(.*)@", $photo_info, $regs)) {
+					$photo->summary = $regs[5];
+					$photo->description = str_replace('\n', "\n", $regs[6]);
+					$photo->keywords = str_replace('\n', "\n", $regs[7]);
+				}
+				$_SESSION['gallery_photos'][$photo->id] = $photo;
+				echo '<div>
+					<input type="checkbox" name="gallery_photos[]" value="'.$photo->id.'" '
+					.(!isset($_GET['select']) || $_GET['select'] == 'all' ? 'checked="checked"' : '').'/>
+					'.clean_gallery_text($photo->title).'
+					<a href="'.$photo->url.'"><img src="'.$photo->thumbUrl.'"/></a>
+					'.(!empty($photo->summary) ? 'Summary: ' . clean_gallery_text($photo->summary) : '').'
+					'.(!empty($photo->description) ? 'Description: ' . clean_gallery_text($photo->description) : '').'
+					'.(!empty($photo->keywords) ? 'Keywords: ' . $photo->keywords : '').'
+				</div>';
+			}
+		}
+		?>
+		<span style="float: right"><a href="select_all" onclick="select(true);return false">Select All</a> 
+		| <a href="select_none" onclick="select(false);return false">Select None</a></span>
+		<br/>
+		<input value="Continue &gt;" type="submit" class="inputsubmit"/><br/>
+	<?php endif; ?>
+</form>

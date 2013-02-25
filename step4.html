@@ -1,0 +1,13 @@
+<h3>Step 4</h3><br/>
+
+<?php print $_SESSION['gallery_uploads'] ?> photos uploaded (<?php print $_SESSION['gallery_skips']?> skipped)<br/><br/>
+
+<span id="action">Click <a href="<?php print "http://gallery.danslereseau.com/fb/?gallery_import=".time() ?>">here</a> to continue the import if it doesn't continue automatically within 5 seconds.</span>
+
+<script type="text/javascript">
+function continue_redirect() {
+	document.getElementById('action').innerHTML='Import in progress... Please wait.';
+	window.location.href='http://gallery.danslereseau.com/fb/?gallery_import=<?php print time() ?>';
+}
+setTimeout('continue_redirect()', 2000);
+</script>

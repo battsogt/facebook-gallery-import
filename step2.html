@@ -1,0 +1,19 @@
+<h3>Step 2</h3>
+<br/>
+<form method="post" action="http://gallery.danslereseau.com/fb/">
+	Which album do you want to import in Facebook?<br/><br/>
+	<select name="gallery_album">
+		<?php
+		foreach ($albums_infos as $album_info) {
+			if (preg_match("@([0-9]+)\t([0-9]+)\t(.+)\t([0-9]+)@", $album_info, $regs)) {
+				echo '<option value="'.$regs[2].';'.str_replace('"','&quot;',$regs[3]).'">'.str_repeat("&nbsp;&nbsp;",$regs[1]).$regs[3].' ('.$regs[4].' photos)</option>';
+			}
+			else if (preg_match("@([0-9]+)\t([0-9]+)\t(.+)@", $album_info, $regs)) {
+				echo '<option value="'.$regs[2].';'.str_replace('"','&quot;',$regs[3]).'">'.str_repeat("&nbsp;&nbsp;",$regs[1]).$regs[3].'</option>';
+			}
+		}
+		?>
+	</select><br/><br/>
+	<span style="color: #888888">Note that only the selected album's photos will be imported; photos in sub-albums will not be imported.</span><br/><br/>
+	<input value="Continue &gt;" type="submit" class="inputsubmit"/>
+</form>

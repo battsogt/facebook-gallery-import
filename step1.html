@@ -1,0 +1,16 @@
+<h3>Step 1</h3>
+<form method="post" action="http://gallery.danslereseau.com/fb/">
+	<br/>
+	<strong>Gallery 2</strong>: What is the URL of the <a href="http://gallery.danslereseau.com/fb/export_fb.phps">export_fb.php script</a> on your Gallery?<br/>
+	<span style="color: #888888">Example: http://www.domain.com/gallery/fb/export_fb.php</span><br/>
+	<a href="http://gallery.danslereseau.com/fb/help.html">Need help?</a><br/><br/>
+	<strong>Gallery 3</strong>: What is the URL of the <a href="http://codex.gallery2.org/Gallery3:Modules:export_facebook" target="_new">export_facebook</a> module on your Gallery?<br/>
+	<span style="color: #888888">Example: http://www.domain.com/gallery/index.php/export_facebook/export_fb</span><br/>
+	<br/>
+	<input type="text" name="gallery_export_url" size="40" value="<?php echo isset($_COOKIE['gallery_url']) ? $_COOKIE['gallery_url'] : '' ?>" /><br/>
+	<?php if (isset($error404)) {
+		echo "<div style='color:red;font-weight:bold'>The above URL returns an error (404 Not Found maybe?) Please try again.</div>";
+	} ?>
+	<br/>
+	<input value="Continue &gt;" type="submit" class="inputsubmit"/><br/>
+</form>
